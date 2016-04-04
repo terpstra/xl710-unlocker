@@ -21,8 +21,17 @@ int main(int argc, const char **argv) {
   int offset = 0;
   int length = 64;
   int mod    = 0;
-  int devid  = 0x1572; // Intel X710 DA4
   uint16_t* ptr;
+  
+  /* Run: lspci -n; Example:
+    01:00.0 0200: 8086:1572 (rev 01)
+    01:00.1 0200: 8086:1572 (rev 01)
+    01:00.2 0200: 8086:1572 (rev 01)
+    01:00.3 0200: 8086:1572 (rev 01)
+                       ^^^^ find this field
+   */
+  int devid  = FILL_ME_IN; // 0x1572 = Intel X710 DA4
+  const char *ethDev = FILL_ME_IN; // "eth3" = If card is on eth3
   
   if (argc >= 2) offset = strtol(argv[1], 0, 0)*2;
   if (argc >= 3) length = strtol(argv[2], 0, 0)*2;
@@ -39,7 +48,7 @@ int main(int argc, const char **argv) {
   eeprom->offset = offset;
   
   memset(&ifr, 0, sizeof(ifr));
-  strcpy(ifr.ifr_name, "eth3");
+  strcpy(ifr.ifr_name, ethDev);
   ifr.ifr_data = (void*)eeprom;
   if (ioctl(fd, SIOCETHTOOL, &ifr) == -1) die("ioctl");
   
