@@ -50,11 +50,7 @@ int main(int argc, char *const *argv) {
     }
   }
 
-  if( c_devname == NULL )
-  {
-    print_usage();
-    exit( EXIT_FAILURE );
-  }
+  if( c_devname == NULL ) print_usage();
 
   int mod = 0;
   uint16_t length = 0x02;
