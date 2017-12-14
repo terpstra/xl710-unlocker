@@ -9,8 +9,8 @@
 #include "syscalls.h"
 
 
-void die(const char *reason) {
-  perror(reason);
+void die( const char *reason ) {
+  perror( reason );
   exit( EXIT_FAILURE );
 }
 
@@ -142,7 +142,7 @@ int main(int argc, char *const *argv) {
     if( misc & 0x0800 ) printf( " <- locked\n" );
     else printf( " <- unlocked\n" );
 
-    if( misc == misc0 )
+    if( misc != misc0 )
     {
       ++change_count;
       misc0 = misc;
