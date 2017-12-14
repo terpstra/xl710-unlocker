@@ -1,4 +1,4 @@
-TARGETS = xl710_patch
+TARGETS = xl710_unlock
 
 all: $(TARGETS)
 

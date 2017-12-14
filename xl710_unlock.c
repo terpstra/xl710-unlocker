@@ -16,7 +16,7 @@ void die(const char *reason) {
 
 void print_usage( void )
 {
-  printf( "xl710_patch\n" );
+  printf( "xl710_unlock\n" );
   printf( "  -n <device_name>, required\n" );
   printf( "  -i <device_id>, default: 0x1572\n" );
   printf( "  -p lock/unlock\n" );

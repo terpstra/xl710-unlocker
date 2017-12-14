@@ -1,4 +1,4 @@
-# xl710_patch
+# xl710_unlock
 
 This program unlocks intel x710 NIC.
 
@@ -7,7 +7,7 @@ This program unlocks intel x710 NIC.
 * test
 
 ```shell
-# xl710_patch -n enp4s0f0
+# xl710_unlock -n enp4s0f0
 EMP SR offset: 0x67a8
 PHY offset: 0x68f6
 PHY data struct size: 0x000c
