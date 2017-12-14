@@ -32,7 +32,7 @@ int main(int argc, char *const *argv) {
 
   int c;
 
-  while( ( c = getopt( argc, argv, "i:n:ph?" ) ) != -1 )
+  while( ( c = getopt( argc, argv, "i:n:h?" ) ) != -1 )
   {
     switch( c )
     {
@@ -41,9 +41,6 @@ int main(int argc, char *const *argv) {
         break;
       case 'n':
         c_devname = optarg;
-        break;
-      case 'p':
-        patching = 1;
         break;
       case 'h':
       case '?':
@@ -121,6 +118,7 @@ int main(int argc, char *const *argv) {
   printf("PHY data struct size: 0x%04x\n", phy_cap_size);
 
   /*
+    Get misc0
   */
 
   uint16_t misc_offset = 0x8;
@@ -150,6 +148,22 @@ int main(int argc, char *const *argv) {
   }
 
   if( change_count > 1 ) die( "Different MISC's values" );
+
+  /*
+    Patching
+  */
+
+  printf( "Ready to fix it? [y/N]: " );
+  char choice = getchar();
+  switch( choice )
+  {
+    case 'y':
+    case 'Y':
+      patching = 1;
+      break;
+    default:
+      patching = 0;
+  }
 
   if( patching )
   {
