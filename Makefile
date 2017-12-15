@@ -1,4 +1,4 @@
-TARGETS = mytool mypoke
+TARGETS = xl710_unlock
 
 all: $(TARGETS)
 
